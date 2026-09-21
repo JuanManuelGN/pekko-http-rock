@@ -16,16 +16,18 @@ object Playground extends App {
 
   val simpleRoute =
     pathEndOrSingleSlash {
-      complete(HttpEntity(
-        ContentTypes.`text/html(UTF-8)`,
-        """
+      complete(
+        HttpEntity(
+          ContentTypes.`text/html(UTF-8)`,
+          """
           |<html>
           | <body>
           |   Rock the JVM with Pekko HTTP!
           | </body>
           |</html>
         """.stripMargin
-      ))
+        )
+      )
     }
 
   val bindingFuture = Http().bindAndHandle(simpleRoute, "localhost", 8080)
